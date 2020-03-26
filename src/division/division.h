@@ -14,39 +14,30 @@ using namespace std;
 
 class DivisionByZero : public exception {
 public:
-  virtual const char *what() const throw() {
+  const char *what() const noexcept override {
     return DIVISION_BY_ZERO_MESSAGE;
   }
 };
 
 struct Fraction {
-  long long numerator;
-  long long denominator;
+    long long numerator;
+    long long denominator;
 };
 
 struct DivisionResult {
-  long long division;
-  long long remainder;
-
-  friend bool operator==(const DivisionResult &lhs, const DivisionResult &rhs) {
-    return lhs.division == rhs.division ? lhs.remainder < rhs.remainder : lhs.division < rhs.division;
-  }
+    long long division;
+    long long remainder;
 };
 
 class Division {
 public:
-  explicit Division(Fraction fraction) {
-    this->fraction = fraction;
-  }
+    explicit Division(const Fraction& f) : fraction(f) {}
 
-  ~Division() {
-  };
+    ~Division() = default;;
+    DivisionResult divide();
 
-  DivisionResult divide();
-
-protected:
-  Fraction       fraction;
-  DivisionResult result;
+private:
+    Fraction fraction;
 };
 
 #endif //CMAKE_DIVISION_H
