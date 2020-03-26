@@ -25,7 +25,7 @@ protected:
     virtual void verify(int index) {
         Fraction f = Fraction{numerators.at(index), denominators.at(index)};
         DivisionResult expected = DivisionResult{divisions.at(index), remainders.at(index)};
-        DivisionResult result = Division(f).divide();
+        DivisionResult result = Division(std::move(f)).divide();
 
         EXPECT_EQ(result.division, expected.division);
         EXPECT_EQ(result.remainder, expected.remainder);
