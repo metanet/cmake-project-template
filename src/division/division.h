@@ -27,35 +27,13 @@ struct Fraction {
 
     Fraction(long long n, long long d) : numerator(n), denominator(d) {}
 
-    Fraction(const Fraction &f) : numerator(f.numerator), denominator(f.denominator) {
-        std::cout << "Fraction copy c'tor" << std::endl;
-    }
+    Fraction(const Fraction &f);
 
-    Fraction(Fraction &&f) : numerator(f.numerator), denominator(f.denominator) {
-        std::cout << "Fraction move c'tor" << std::endl;
-    }
+    Fraction(Fraction &&f) noexcept;
 
-    Fraction &operator=(const Fraction &other) {
-        std::cout << "Fraction copy assignment" << std::endl;
-        if (this != &other) {
-            this->numerator = other.numerator;
-            this->denominator = other.denominator;
-        }
+    Fraction &operator=(const Fraction &other);
 
-        return *this;
-    }
-
-    Fraction &operator=(Fraction &&other) {
-        std::cout << "Fraction move assignment" << std::endl;
-        if (this != &other) {
-            this->numerator = other.numerator;
-            this->denominator = other.denominator;
-        }
-
-        return *this;
-    }
-
-
+    Fraction &operator=(Fraction &&other) noexcept;
 };
 
 struct DivisionResult {
@@ -66,49 +44,20 @@ struct DivisionResult {
 
     DivisionResult(long long d, long long r) : division(d), remainder(r) {}
 
-    DivisionResult(const DivisionResult &d) : division(d.division), remainder(d.remainder) {
-        std::cout << "DivisionResult copy c'tor" << std::endl;
-    }
+    DivisionResult(const DivisionResult &d);
 
-    DivisionResult(DivisionResult &&d) : division(d.division), remainder(d.remainder) {
-        std::cout << "DivisionResult move c'tor" << std::endl;
-    }
+    DivisionResult(DivisionResult &&d) noexcept;
 
-    DivisionResult &operator=(const DivisionResult &other) {
-        std::cout << "DivisionResult copy assignment" << std::endl;
-        if (this != &other) {
-            this->division = other.division;
-            this->remainder = other.remainder;
-        }
+    DivisionResult &operator=(const DivisionResult &other);
 
-        return *this;
-    }
-
-    DivisionResult &operator=(DivisionResult &&other) {
-        std::cout << "DivisionResult move assignment" << std::endl;
-        if (this != &other) {
-            this->division = other.division;
-            this->remainder = other.remainder;
-        }
-
-        return *this;
-    }
+    DivisionResult &operator=(DivisionResult &&other) noexcept;
 };
 
 class Division {
 public:
-    explicit Division(const Fraction &f) : fraction(f) {
-        std::cout << "Division copy c'tor" << std::endl;
-    }
+    explicit Division(const Fraction &f);
 
-    explicit Division(Fraction &&f) : fraction(std::move(f)) {
-        // From Scott Mayers:
-        // an rvalue reference as a function parameter is turned back into
-        // an lvalue by virtue of the fact that it is now named, and therefore
-        // std::move is necessary once again turn it back into an rvalue.
-
-        std::cout << "Division move c'tor" << std::endl;
-    }
+    explicit Division(Fraction &&f) noexcept;
 
     ~Division() = default;
 
