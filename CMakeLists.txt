@@ -5,6 +5,8 @@ project(cmake-project-template)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -O3")
 
+# PROJECT_SOURCE_DIR: top level src dir
+
 set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
 
 set(DIVISIBLE_INSTALL_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)

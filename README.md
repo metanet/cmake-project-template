@@ -4,20 +4,11 @@
 
 ### Division with a remainder library
 
-Thank you for your interest in this project!
-
-Are you just starting with `CMake` or C++?
-
-Do you need some easy-to-use starting point, but one that has the basic moving parts you are likely going to need on any medium sized project?
-
-Do you believe in test-driven development, or at the very lest — write your tests *together* with the feature code? If so you'd want to start your project pre-integrated with a good testing framework.
-
 Divider is a minimal project that's kept deliberately very small. When you build it using CMake/make (see below) it generates:
 
  1. A tiny **static library** `lib/libdivision.a`,
  2. **A command line binary `bin/divider`**, which links with the library,
  3. **An executable unit test** `bin/divider_tests`  using [Google Test library](https://github.com/google/googletest).
- 4. **An optional BASH build script** `build-and-run` that you can use to quickly test if the project compiles, and runs.
 
 ## Usage
 
@@ -30,24 +21,6 @@ You will need:
  * If you prefer to code in a great IDE, I highly recommend [Jetbrains CLion](https://www.jetbrains.com/clion/). It is fully compatible with this project.
 
 ### Building The Project
-
-#### Git Clone
-
-First we need to check out the git repo:
-
-```bash
-❯ mkdir ~/workspace
-❯ cd ~/workspace
-❯ git clone \
-    https://github.com/kigster/cmake-project-template \
-    my-project
-❯ cd my-project
-❯ bash build-and-run
-```
-
-The output of this script is rather long and is shown [on this screenshot](doc/build-and-run.png).
-
-The script `build-and-run` is a short-cut — you shouldn't really be using this script to build your project, but see how to do it properly below.
 
 #### Project Structure
 
@@ -99,8 +72,6 @@ Without arguments, it prints out its usage:
 
 ```bash
 ❯ bin/divider
-
-Divider © 2018 Monkey Claps Inc.
 
 Usage:
 	divider <numerator> <denominator>
